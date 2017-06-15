@@ -12,6 +12,7 @@ def note_name_to_midi(filename):
     note = filename.split('_')[1]
     note_name = re.match("[a-g][#b]?", note).group()
     pitch = notes[note_name] * note[-1] * 12
+    return pitch
 
 sounds = [[] for i in range(200)]
 
