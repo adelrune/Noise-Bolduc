@@ -7,14 +7,15 @@ from random import choice
 s = Server(audio="jack").boot()
 s.setMidiInputDevice(1)
 
-notes = {'c':0,'c#':1,'d':2,'d#':3,'e':4,'f':5,'f#':6,'g':7,'g#':9,'a':10,'a#':11}
+notes = {'c':0,'c#':1,'d':2,'d#':3,'e':4,'f':5,'f#':6,'g':7,'g#':8,'a':9,'a#':10, 'b':11}
 def note_name_to_midi(filename):
     note = filename.split('_')[1]
     note_name = re.match("[a-g][#b]?", note).group()
-    pitch = notes[note_name] * note[-1] * 12
+    pitch = notes[note_name] * int(note[-1]) * 12
+    print(pitch)
     return pitch
 
-sounds = [[] for i in range(200)]
+sounds = [[] for i in range(1000)]
 
 for note_file in listdir("snds"):
     if isfile("snds/" + note_file):
